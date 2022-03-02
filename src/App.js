@@ -1,33 +1,40 @@
 import React, { useState } from "react";
 import "./App.scss";
+import randomWords from "random-words";
 
-function App() {
+const word = randomWords({
+  exactly: 1,
+  maxLength: 7,
+  formatter: (word) => word.toLowerCase(),
+});
+console.log(word[0]);
+
+const App = () => {
   const [selectedLetters, setSelectedLetters] = useState([]);
 
-  const word = "billy";
   let letterList = [];
   let j = 0;
-  [...word].forEach((letter) =>
+  [...word[0]].forEach((letter) =>
     letterList.push(
       <li
         className={
           "letter " +
-          (selectedLetters.includes(letter.toUpperCase()) ? "isSelected" : "")
+          (selectedLetters.includes(letter.toLowerCase()) ? "isSelected" : "")
         }
         key={j++}
       >
-        {letter.toUpperCase()}
+        {letter.toLowerCase()}
       </li>
     )
   );
 
   let buttonList = [];
-  for (let i = 65; i < 91; i++) {
+  for (let i = 97; i < 123; i++) {
     buttonList.push(
       <button
         className={
           "letterButton " +
-          (selectedLetters.includes(String.fromCharCode(i).toUpperCase())
+          (selectedLetters.includes(String.fromCharCode(i).toLowerCase())
             ? "isSelected"
             : "")
         }
@@ -35,7 +42,7 @@ function App() {
         onClick={() =>
           setSelectedLetters([
             ...selectedLetters,
-            String.fromCharCode(i).toUpperCase(),
+            String.fromCharCode(i).toLowerCase(),
           ])
         }
       >
@@ -50,6 +57,6 @@ function App() {
       <ul className="buttons">{buttonList}</ul>
     </div>
   );
-}
+};
 
 export default App;
