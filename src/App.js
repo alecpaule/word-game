@@ -2,14 +2,23 @@ import React, { useState } from "react";
 import "./App.scss";
 
 function App() {
-  const [letter, setLetter] = useState("");
   const [selectedLetters, setSelectedLetters] = useState([]);
 
-  const word = "hello";
-  let charList = [];
+  const word = "billy";
+  let letterList = [];
   let j = 0;
-  [...word].forEach((char) =>
-    charList.push(<li key={j++}>{char.toUpperCase()}</li>)
+  [...word].forEach((letter) =>
+    letterList.push(
+      <li
+        className={
+          "letter " +
+          (selectedLetters.includes(letter.toUpperCase()) ? "isSelected" : "")
+        }
+        key={j++}
+      >
+        {letter.toUpperCase()}
+      </li>
+    )
   );
 
   let buttonList = [];
@@ -37,7 +46,7 @@ function App() {
 
   return (
     <div className="App">
-      <ul className="word">{charList}</ul>
+      <ul className="word">{letterList}</ul>
       <ul className="buttons">{buttonList}</ul>
     </div>
   );

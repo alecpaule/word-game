@@ -16,13 +16,17 @@ body {
   background: #474954;
 }
 
-li {
+.letter {
   display: inline;
   list-style-type: none;
   font-size: 80px;
   margin-left: 30px;
   margin-right: 30px;
-  color: #e2d4ba;
+  color: #474954;
+
+  &.isSelected {
+    color: #e2d4ba;
+  }
 }
 
 .letterButton {
@@ -36,6 +40,6 @@ li {
   cursor: pointer;
 
   &.isSelected {
-    color: red;
+    color: #474954;
   }
 }
