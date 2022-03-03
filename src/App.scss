@@ -19,7 +19,7 @@ body {
 }
 
 .letter {
-  display: inline;
+  display: inline-block;
   list-style-type: none;
   font-size: 80px;
   margin-left: 30px;
@@ -28,6 +28,8 @@ body {
   color: #474954;
   //   text-decoration: underline 3px #e2d4ba;
   border-bottom: 3px solid #e2d4ba;
+  width: 50px;
+  height: 100px;
 
   &.isSelected {
     color: #e2d4ba;
