@@ -11,6 +11,7 @@ console.log(word[0]);
 
 const App = () => {
   const [selectedLetters, setSelectedLetters] = useState([]);
+  const [guesses, setGuesses] = useState(0);
 
   let letterList = [];
   let j = 0;
@@ -38,7 +39,10 @@ const App = () => {
           (selectedLetters.includes(letter) ? "isSelected" : "")
         }
         key={i}
-        onClick={() => setSelectedLetters([...selectedLetters, letter])}
+        onClick={() => {
+          setSelectedLetters([...selectedLetters, letter]);
+          setGuesses(guesses + 1);
+        }}
       >
         {letter}
       </button>
@@ -49,6 +53,7 @@ const App = () => {
     <div className="App">
       <ul className="word">{letterList}</ul>
       <ul className="buttons">{buttonList}</ul>
+      <p className="guesses">guesses: {guesses}</p>
     </div>
   );
 };
