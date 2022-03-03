@@ -5,7 +5,7 @@ import randomWords from "random-words";
 const word = randomWords({
   exactly: 1,
   maxLength: 7,
-  formatter: (word) => word.toLowerCase(),
+  formatter: (word) => word.toUpperCase(),
 });
 console.log(word[0]);
 
@@ -19,34 +19,28 @@ const App = () => {
       <li
         className={
           "letter " +
-          (selectedLetters.includes(letter.toLowerCase()) ? "isSelected" : "")
+          (selectedLetters.includes(letter.toUpperCase()) ? "isSelected" : "")
         }
         key={j++}
       >
-        {letter.toLowerCase()}
+        {letter.toUpperCase()}
       </li>
     )
   );
 
   let buttonList = [];
-  for (let i = 97; i < 123; i++) {
+  for (let i = 65; i < 91; i++) {
+    const letter = String.fromCharCode(i).toUpperCase();
     buttonList.push(
       <button
         className={
           "letterButton " +
-          (selectedLetters.includes(String.fromCharCode(i).toLowerCase())
-            ? "isSelected"
-            : "")
+          (selectedLetters.includes(letter) ? "isSelected" : "")
         }
         key={i}
-        onClick={() =>
-          setSelectedLetters([
-            ...selectedLetters,
-            String.fromCharCode(i).toLowerCase(),
-          ])
-        }
+        onClick={() => setSelectedLetters([...selectedLetters, letter])}
       >
-        {String.fromCharCode(i)}
+        {letter}
       </button>
     );
   }

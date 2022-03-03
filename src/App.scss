@@ -26,6 +26,8 @@ body {
   margin-right: 30px;
   font-family: "Raleway", sans-serif;
   color: #474954;
+  //   text-decoration: underline 3px #e2d4ba;
+  border-bottom: 3px solid #e2d4ba;
 
   &.isSelected {
     color: #e2d4ba;
