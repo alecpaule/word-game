@@ -11,7 +11,8 @@ console.log(word[0]);
 
 const App = () => {
   const [selectedLetters, setSelectedLetters] = useState([]);
-  const [guesses, setGuesses] = useState(0);
+  const [totalGuesses, setTotalGuesses] = useState(0);
+  const [incorrectGuesses, setIncorrectGuesses] = useState(0);
 
   const correctWord = word[0];
   console.log(correctWord);
@@ -38,7 +39,9 @@ const App = () => {
         key={i}
         onClick={() => {
           setSelectedLetters([...selectedLetters, letter]);
-          setGuesses(guesses + 1);
+          setTotalGuesses(totalGuesses + 1);
+          word[0].indexOf(letter) == -1 &&
+            setIncorrectGuesses(incorrectGuesses + 1);
         }}
       >
         {!selectedLetters.includes(letter.toUpperCase()) &&
@@ -51,7 +54,8 @@ const App = () => {
     <div className="App">
       <ul className="word">{renderLetterList()}</ul>
       <ul className="buttons">{buttonList}</ul>
-      <p className="guesses">guesses: {guesses}</p>
+      <p className="guesses">total guesses: {totalGuesses}</p>
+      <p className="guesses incorrect">incorrect guesses: {incorrectGuesses}</p>
     </div>
   );
 };

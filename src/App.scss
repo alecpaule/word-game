@@ -55,4 +55,8 @@ ul {
   margin-top: 50px;
   font-family: "Raleway", sans-serif;
   color: #e2d4ba;
+
+  &.incorrect {
+    margin-top: 0px;
+  }
 }
