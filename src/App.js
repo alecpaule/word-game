@@ -5,7 +5,7 @@ import randomWords from "random-words";
 const word = randomWords({
   exactly: 1,
   maxLength: 7,
-  formatter: (word) => word.toUpperCase()
+  formatter: (word) => word.toUpperCase(),
 });
 console.log(word[0]);
 
@@ -14,23 +14,7 @@ const App = () => {
   const [guesses, setGuesses] = useState(0);
 
   const correctWord = word[0];
-
   console.log(correctWord);
-  // const letterList = [];
-  // let j = 0;
-  // [...word[0]].forEach((letter) =>
-  //   letterList.push(
-  //     <li
-  //       className={
-  //         "letter " +
-  //         (selectedLetters.includes(letter.toUpperCase()) ? "isSelected" : "")
-  //       }
-  //       key={j++}
-  //     >
-  //       {letter.toUpperCase()}
-  //     </li>
-  //   )
-  // );
 
   const renderLetterList = () =>
     correctWord.split("").map((letter, index) => (
@@ -50,17 +34,15 @@ const App = () => {
     const letter = String.fromCharCode(i).toUpperCase();
     buttonList.push(
       <button
-        className={
-          "letterButton " +
-          (selectedLetters.includes(letter) ? "isSelected" : "")
-        }
+        className={"letterButton"}
         key={i}
         onClick={() => {
           setSelectedLetters([...selectedLetters, letter]);
           setGuesses(guesses + 1);
         }}
       >
-        {letter}
+        {!selectedLetters.includes(letter.toUpperCase()) &&
+          letter.toUpperCase()}
       </button>
     );
   }

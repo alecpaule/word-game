@@ -18,6 +18,10 @@ body {
   background: #474954;
 }
 
+ul {
+  padding: 0;
+}
+
 .letter {
   display: inline-block;
   list-style-type: none;
@@ -26,7 +30,6 @@ body {
   margin-right: 30px;
   font-family: "Raleway", sans-serif;
   color: #474954;
-  //   text-decoration: underline 3px #e2d4ba;
   border-bottom: 3px solid #e2d4ba;
   width: 50px;
   height: 100px;
@@ -46,10 +49,6 @@ body {
   font-family: "Raleway", sans-serif;
   color: #e2d4ba;
   cursor: pointer;
-
-  &.isSelected {
-    color: #474954;
-  }
 }
 
 .guesses {
