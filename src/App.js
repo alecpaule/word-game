@@ -13,9 +13,32 @@ const App = () => {
   const [selectedLetters, setSelectedLetters] = useState([]);
   const [totalGuesses, setTotalGuesses] = useState(0);
   const [incorrectGuesses, setIncorrectGuesses] = useState(0);
+  const [isWordFound, setIsWordFound] = useState(false);
 
   const correctWord = word[0];
-  console.log(correctWord);
+
+  const onClickLetter = (letter) => {
+    setIsWordFound(checkIsWordFound);
+
+    if (!isWordFound) {
+      setSelectedLetters([...selectedLetters, letter]);
+      setTotalGuesses(totalGuesses + 1);
+      word[0].indexOf(letter) === -1 &&
+        setIncorrectGuesses(incorrectGuesses + 1);
+    }
+
+    setIsWordFound(checkIsWordFound);
+  };
+
+  const checkIsWordFound = () => {
+    for (let letter of correctWord) {
+      if (!selectedLetters.includes(letter)) {
+        return false;
+      }
+    }
+
+    return true;
+  };
 
   const renderLetterList = () =>
     correctWord.split("").map((letter, index) => (
@@ -37,12 +60,7 @@ const App = () => {
       <button
         className={"letterButton"}
         key={i}
-        onClick={() => {
-          setSelectedLetters([...selectedLetters, letter]);
-          setTotalGuesses(totalGuesses + 1);
-          word[0].indexOf(letter) == -1 &&
-            setIncorrectGuesses(incorrectGuesses + 1);
-        }}
+        onClick={() => onClickLetter(letter)}
       >
         {!selectedLetters.includes(letter.toUpperCase()) &&
           letter.toUpperCase()}
